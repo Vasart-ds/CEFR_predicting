@@ -86,7 +86,7 @@ if upload_button is not None:
     #cleaned_sub = cleaned_sub.apply(preprocess)
     #st.write(cleaned_sub)
 
-    string_data = re.sub(r'\W', ' ', str(string_data))
+    string_data = re.sub(r'\n', ' ', str(string_data)) del_n = re.compile('\n')
     string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
     string_data = re.sub(r'[^а-яa-z\s]', ' ', string_data)
     string_data = string_data.lower()
