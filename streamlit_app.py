@@ -89,27 +89,9 @@ if upload_button is not None:
     text = nlp(text)
     #text = nltk.word_tokenize(text, language = "english")
     #spacy_results = nlp(text)
-    text = ' '.join([token.lemma_ for token in text])
+    #text = ' '.join([token.lemma_ for token in text])
     text = nltk.word_tokenize(text, language = "english")
     st.write(text)
-    
-    #cleaned_sub = clean_subs(string_data)
-    ##cleaned_sub = cleaned_sub.apply(preprocess)
-    #st.write(cleaned_sub)
-    
-    # ВАРИАНТ 2
-    # string_data = re.sub(r'\n', ' ', str(string_data))
-    # string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
-    # string_data = re.sub(r'[^а-яa-z\s]', ' ', string_data)
-    # string_data = string_data.lower()
-    # spacy_results = nlp(string_data)
-    # string_data = ' '.join([token.lemma_ for token in spacy_results])
-    # st.write(string_data)
-    
-    # ВАРИАНТ 3
-    #data = preprocess(string_data)
-    #data = nltk.word_tokenize(data, language = "english")
-    #st.write(data)
     
     vectorizer = CountVectorizer(stop_words = stop_words)
     vectorized_sub = vectorizer.fit_transform(text).toarray()
