@@ -106,7 +106,7 @@ if upload_button is not None:
     
     # ВАРИАНТ 3
     data = preprocess(string_data)
-    data = nlp(data)
+    data = nltk.word_tokenize(data, language = "english")
     
     vectorizer = CountVectorizer(stop_words = stop_words)
     vectorized_sub = vectorizer.fit_transform(data).toarray()
