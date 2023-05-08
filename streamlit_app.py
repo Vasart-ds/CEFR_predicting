@@ -61,7 +61,7 @@ def clean_subs(sub_list):
         filtered.append(text)
     return filtered
  
- def preprocess(text):
+def preprocess(text):
     # удаление символов
     document = re.sub(r'\W', ' ', str(text))
     # удаление одиноко стоящих слов
