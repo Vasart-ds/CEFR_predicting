@@ -52,7 +52,7 @@ def del_stopwords(text):
 
 def lemmatize(text):    
     lemmatized_text = ''.join(Mystem().lemmatize(text))
-    return lemmatized_text.split('|')
+    return lemmatized_text#.split('|')
   
 def clean_subs(sub_list):
     filtered = []
