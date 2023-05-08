@@ -87,7 +87,7 @@ if upload_button is not None:
     #st.write(cleaned_sub)
 
     string_data = re.sub(r'\n', ' ', str(string_data))
-    string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
+    # string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
     string_data = re.sub(r'[^а-яa-z\s]', ' ', string_data)
     string_data = string_data.lower()
     spacy_results = nlp(string_data)
