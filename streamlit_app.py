@@ -66,7 +66,7 @@ if upload_button is not None:
     text = nlp(str(text))
     #text = ' '.join([token.lemma_ for token in text])
     
-    subs_features = pd.DataFrame({'subtitles': [text]})
+    subs_features = pd.DataFrame({'subtitles': text})
     st.write(subs_features)
     
     vectorizer = CountVectorizer(stop_words=stop_words)
