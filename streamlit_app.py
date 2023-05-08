@@ -45,7 +45,7 @@ if upload_button is not None:
     document = ' '.join([token.lemma_ for token in spacy_results])
     return document
   
-  string_data = re.compile(r'\W', ' ', str(string_data))
+  string_data = re.sub(r'\W', ' ', str(string_data))
   
  # string_data = string_data.apply(preprocess)
   st.write(string_data)
