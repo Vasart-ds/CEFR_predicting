@@ -7,10 +7,11 @@ from io import StringIO
 
 import nltk
 nltk.download('stopwords')
+from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from pymystem3 import Mystem
+import spacy
 
-from nltk.corpus import stopwords
 
 # content
 st.title('_Jules Winnfield CEFR english predicting_')
