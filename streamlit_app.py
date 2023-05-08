@@ -77,7 +77,7 @@ def lemmatize(text):
   
 def clean_subs(sub_list):
     filtered = []
-    for word in tqdm(range(len(sub_list))):
+    for word in range(len(sub_list)):
         text = prepare_text(sub_list[word])
         text = del_stopwords(text)
         text = lemmatize(text)
