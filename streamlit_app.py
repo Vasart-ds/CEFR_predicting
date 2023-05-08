@@ -75,7 +75,7 @@ def lemmatize(text):
     lemmatized_text = ''.join(Mystem().lemmatize(text))
     return lemmatized_text.split('|')
   
-  def clean_subs(sub_list):
+def clean_subs(sub_list):
     filtered = []
     for word in tqdm(range(len(sub_list))):
         text = prepare_text(sub_list[word])
