@@ -16,5 +16,5 @@ upload_button = upload_button.file_uploader(label='English, dearfrend, can u rea
 uploaded_file = st.upload_button
 
 if uploaded_file is not None:
-  stringio = StringIO(upload_button.getvalue().decode='iso-8859-1')
+  stringio = StringIO(uploaded_file.getvalue().decode='iso-8859-1')
   st.write(stringio)
