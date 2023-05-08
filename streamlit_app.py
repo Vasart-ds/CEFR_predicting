@@ -66,7 +66,7 @@ def preprocess(text):
     document = re.sub(r'\W', ' ', str(text))
     # удаление одиноко стоящих слов
     document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
-    document = clean_text = re.sub('[^а-яa-z\s]')
+    document = re.sub('[^а-яa-z\s]', ' ', document)
     # приведение к нижнему регистру 
     document = document.lower()
     # токенизация
