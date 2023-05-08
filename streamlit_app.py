@@ -110,12 +110,14 @@ if upload_button is not None:
     #data = preprocess(string_data)
     #data = nltk.word_tokenize(data, language = "english")
     #st.write(data)
-    #vectorizer = CountVectorizer(stop_words = stop_words)
-    #vectorized_sub = vectorizer.fit_transform(data).toarray()
+    
+    vectorizer = CountVectorizer(stop_words = stop_words)
+    vectorized_sub = vectorizer.fit_transform(text).toarray()
     
 #    df = pd.DataFrame({})
     
-    #model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
-    #prediction_clf = model.predict(vectorized_sub.T)
+    model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
+    prediction = model.predict(vectorized_sub.T)
+    st.write(prediction)
     
     #movie_name = movie_name.write(prediction_clf)
