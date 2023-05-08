@@ -89,7 +89,7 @@ if upload_button is not None:
     text = nlp(text)
     #text = nltk.word_tokenize(text, language = "english")
     #spacy_results = nlp(text)
-    #text = ' '.join([token.lemma_ for token in text])
+    text = ' '.join([token.lemma_ for token in text])
     st.write(text)
     
     #cleaned_sub = clean_subs(string_data)
