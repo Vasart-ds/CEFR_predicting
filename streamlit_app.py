@@ -46,6 +46,10 @@ if upload_button is not None:
     return document
   
   string_data = re.sub(r'\W', ' ', str(string_data))
+  string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
+  string_data = string_data.lower()
+  spacy_results = nlp(string_data)
+  string_data = ' '.join([token.lemma_ for token in spacy_results])
   
  # string_data = string_data.apply(preprocess)
   st.write(string_data)
