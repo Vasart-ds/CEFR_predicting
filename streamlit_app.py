@@ -81,41 +81,23 @@ if upload_button is not None:
     stringio = StringIO(upload_button.getvalue().decode('iso-8859-1'))
     string_data = stringio.read()
     
-    text = prepare_text(string_data)
-    text = del_stopwords(text)
-    text = nltk.word_tokenize(text, language = "english")
+    # ВАРИАНТ 1
+    #text = prepare_text(string_data)
+    #text = del_stopwords(text)
+    #text = nltk.word_tokenize(text, language = "english")
     #spacy_results = nlp(text)
     #text = ' '.join([token.lemma_ for token in text])
-    st.write(text)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    #st.write(text)
     
     #cleaned_sub = clean_subs(string_data)
     ##cleaned_sub = cleaned_sub.apply(preprocess)
     #st.write(cleaned_sub)
-
-    #string_data = re.sub(r'\n', ' ', str(string_data))
-    # string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
-    #string_data = re.sub(r'[^а-яa-z\s]', ' ', string_data)
-    #string_data = string_data.lower()
-    #spacy_results = nlp(string_data)
-    #string_data = ' '.join([token.lemma_ for token in spacy_results])
     
-    #st.write(string_data)
+    # ВАРИАНТ 2
+    string_data = re.sub(r'\n', ' ', str(string_data))
+    string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
+    string_data = re.sub(r'[^а-яa-z\s]', ' ', string_data)
+    string_data = string_data.lower()
+    spacy_results = nlp(string_data)
+    string_data = ' '.join([token.lemma_ for token in spacy_results])
+    st.write(text)
