@@ -5,7 +5,6 @@ import os
 
 from io import StringIO
 
-import pysrt
 import nltk
 nltk.download('stopwords')
 from nltk.tokenize import word_tokenize
