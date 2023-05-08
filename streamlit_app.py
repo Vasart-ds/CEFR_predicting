@@ -112,6 +112,6 @@ if upload_button is not None:
     vectorized_sub = vectorizer.fit_transform(data).toarray()
     
     model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
-    prediction_clf = model.predict([vectorized_sub[1]])
+    prediction_clf = model.predict([vectorized_sub.iloc[25]])
     
     movie_name = movie_name.write(prediction_clf)
