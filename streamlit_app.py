@@ -56,23 +56,32 @@ def clean_subs(sub_list):
         text = prepare_text(sub_list[word])
         text = del_stopwords(text)
         text = lemmatize(text)
-        # тест
-#        text = nlp(text)
         filtered.append(text)
     return filtered
+
+def preprocess(text):
+    # удаление символов
+    document = re.sub(r'\W', ' ', str(text))
+    # удаление одиноко стоящих слов
+    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
+    # приведение к нижнему регистру 
+    document = document.lower()
+    # токенизация
+    #document = nltk.word_tokenize(document,language = "english")
+    # лемматизация
+    spacy_results = nlp(document)
+    document = ' '.join([token.lemma_ for token in spacy_results])
+    return document
 
 
 # реализация программы
 if upload_button is not None:
-  stringio = StringIO(upload_button.getvalue().decode('iso-8859-1'))
-  string_data = stringio.read()
-  
-  stop_words = stopwords.words('english')
-  nlp = spacy.load("en_core_web_sm")
-  
-  cleaned_sub = clean_subs(string_data)
-  st.write(cleaned_sub)
-
+    stringio = StringIO(upload_button.getvalue().decode('iso-8859-1'))
+    string_data = stringio.read()
+    
+    cleaned_sub = string_data.apply(preprocess)
+    st.write(cleaned_sub)
+    
   
  # def preprocess(text):
  #   # удаление символов
