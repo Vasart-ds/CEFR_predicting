@@ -62,19 +62,19 @@ def clean_subs(sub_list):
     return filtered
  
  def preprocess(text):
-     # удаление символов
-     document = re.sub(r'\W', ' ', str(text))
-     # удаление одиноко стоящих слов
-     document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
-     document = clean_text = re.sub('[^а-яa-z\s]')
-     # приведение к нижнему регистру 
-     document = document.lower()
-     # токенизация
-     #document = nltk.word_tokenize(document,language = "english")
-     # лемматизация
-     spacy_results = nlp(document)
-     document = ' '.join([token.lemma_ for token in spacy_results])
-     return document
+    # удаление символов
+    document = re.sub(r'\W', ' ', str(text))
+    # удаление одиноко стоящих слов
+    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
+    document = clean_text = re.sub('[^а-яa-z\s]')
+    # приведение к нижнему регистру 
+    document = document.lower()
+    # токенизация
+    #document = nltk.word_tokenize(document,language = "english")
+    # лемматизация
+    spacy_results = nlp(document)
+    document = ' '.join([token.lemma_ for token in spacy_results])
+    return document
 
 # реализация программы
 if upload_button is not None:
