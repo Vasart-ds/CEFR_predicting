@@ -15,5 +15,5 @@ free_space_1, upload_button, free_space_2 = st.columns(3)
 upload_button = upload_button.st.file_uploader(label='English, dearfrend, can u read it?!')
 
 if upload_button is not None:
-  stringio = StringIO(upload_button.getvalue().decode='iso-8859-1')
+  stringio = StringIO(upload_button.getvalue().decode('iso-8859-1'))
   st.write(stringio)
