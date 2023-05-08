@@ -25,8 +25,9 @@ free_space_1, upload_button, free_space_2 = st.columns(3)
 upload_button = upload_button.file_uploader(label='English, dearfrend, can u read it?!')
 
 # функции для очистки субтитров
-# stop_words = stopwords.words('english')
-# nlp = spacy.load("en_core_web_sm")
+stop_words = stopwords.words('english')
+nlp = spacy.load("en_core_web_sm")
+
 # 
 # del_n = re.compile('\n')                # перенос каретки
 # del_tags = re.compile('<[^>]*>')        # html-теги
