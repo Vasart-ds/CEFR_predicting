@@ -92,9 +92,9 @@ if upload_button is not None:
     text = pd.Series(text)
     st.write(text)
     
-    #vectorizer = CountVectorizer(stop_words=stop_words)
-    #vectorized_sub = vectorizer.fit_transform(text).toarray()
-    #st.write(vectorized_sub)
+    vectorizer = CountVectorizer(stop_words=stop_words)
+    vectorized_sub = vectorizer.fit_transform(text[0]).toarray()
+    st.write(vectorized_sub)
     
 #    df = pd.DataFrame({})
     
