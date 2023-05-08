@@ -14,6 +14,8 @@ from nltk.tokenize import word_tokenize
 from pymystem3 import Mystem
 import spacy
 
+from sklearn.feature_extraction.text import CountVectorizer
+
 
 # content
 st.title('_Jules Winnfield CEFR english predicting_')
@@ -104,4 +106,8 @@ if upload_button is not None:
     
     # ВАРИАНТ 3
     data = preprocess(string_data)
-    st.write(data)
+    
+    vectorizer = CountVectorizer(stop_words = stop_words)
+    vectorized_sub = vectorizer.fit_transform(data).toarray()
+    vectorized_sub
+    st.write(vectorized_sub)
