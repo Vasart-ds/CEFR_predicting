@@ -79,7 +79,7 @@ if upload_button is not None:
     stringio = StringIO(upload_button.getvalue().decode('iso-8859-1'))
 #    string_data = stringio.read()
     
-    cleaned_sub = string_data.apply(preprocess)
+    cleaned_sub = stringio.apply(preprocess)
     st.write(stringio)
     
   
