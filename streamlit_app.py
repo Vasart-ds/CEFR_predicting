@@ -63,20 +63,20 @@ def clean_subs(sub_list):
         filtered.append(text)
     return filtered
  
-def preprocess(text):
-    # удаление символов
-    document = re.sub(r'\W', ' ', str(text))
-    # удаление одиноко стоящих слов
-    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
-    document = re.sub('[^а-яa-z\s]', ' ', document)
-    # приведение к нижнему регистру 
-    document = document.lower()
-    # токенизация
-    #document = nltk.word_tokenize(document,language = "english")
-    # лемматизация
-    spacy_results = nlp(document)
-    document = ' '.join([token.lemma_ for token in spacy_results])
-    return document
+#def preprocess(text):
+#    # удаление символов
+#    document = re.sub(r'\W', ' ', str(text))
+#    # удаление одиноко стоящих слов
+#    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
+#    document = re.sub('[^а-яa-z\s]', ' ', document)
+#    # приведение к нижнему регистру 
+#    document = document.lower()
+#    # токенизация
+#    #document = nltk.word_tokenize(document,language = "english")
+#    # лемматизация
+#    spacy_results = nlp(document)
+#    document = ' '.join([token.lemma_ for token in spacy_results])
+#    return document
 
 # реализация программы
 if upload_button is not None:
@@ -88,11 +88,11 @@ if upload_button is not None:
     text = del_stopwords(text)
     text = nlp(text)
     text = ' '.join([token.lemma_ for token in text])
-    st.write(text)
+    #st.write(text)
     
-    #vectorizer = CountVectorizer(stop_words=stop_words)
-    #vectorized_sub = vectorizer.fit_transform([text]).toarray()
-    #st.write(vectorized_sub)
+    vectorizer = CountVectorizer(stop_words=stop_words)
+    vectorized_sub = vectorizer.fit_transform([text][1]).toarray()
+    st.write(vectorized_sub)
     
 #    df = pd.DataFrame({})
     
