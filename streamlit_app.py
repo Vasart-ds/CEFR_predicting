@@ -17,4 +17,23 @@ upload_button = upload_button.file_uploader(label='English, dearfrend, can u rea
 if upload_button is not None:
   stringio = StringIO(upload_button.getvalue().decode('iso-8859-1'))
   string_data = stringio.read()
+  
+  stop_words = stopwords.words('english')
+  nlp = spacy.load("en_core_web_sm")
+  
+  def preprocess(text):
+    # удаление символов
+    document = re.sub(r'\W', ' ', str(text))
+    # удаление одиноко стоящих слов
+    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
+    # приведение к нижнему регистру 
+    document = document.lower()
+    # токенизация
+    #document = nltk.word_tokenize(document,language = "english")
+    # лемматизация
+    spacy_results = nlp(document)
+    document = ' '.join([token.lemma_ for token in spacy_results])
+    return document
+  
+  string_data = string_data.apply(preprocess)
   st.write(string_data)
