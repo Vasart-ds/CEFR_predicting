@@ -65,7 +65,7 @@ if upload_button is not None:
     text = nltk.word_tokenize(text,language = "english")
     text = nlp(str(text))
     text = ' '.join([token.lemma_ for token in text])
-    text = pd.Series(text)
+    #text = pd.Series(text)
     
     subs_features = pd.DataFrame({'subtitles': text})
     st.write(subs_features)
