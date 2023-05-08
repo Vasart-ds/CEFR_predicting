@@ -61,20 +61,20 @@ def clean_subs(sub_list):
         filtered.append(text)
     return filtered
  
-# def preprocess(text):
-#     # удаление символов
-#     document = re.sub(r'\W', ' ', str(text))
-#     # удаление одиноко стоящих слов
-#     document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
-#     document = clean_text = re.sub('[^а-яa-z\s]')
-#     # приведение к нижнему регистру 
-#     document = document.lower()
-#     # токенизация
-#     #document = nltk.word_tokenize(document,language = "english")
-#     # лемматизация
-#     spacy_results = nlp(document)
-#     document = ' '.join([token.lemma_ for token in spacy_results])
-#     return document
+ def preprocess(text):
+     # удаление символов
+     document = re.sub(r'\W', ' ', str(text))
+     # удаление одиноко стоящих слов
+     document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
+     document = clean_text = re.sub('[^а-яa-z\s]')
+     # приведение к нижнему регистру 
+     document = document.lower()
+     # токенизация
+     #document = nltk.word_tokenize(document,language = "english")
+     # лемматизация
+     spacy_results = nlp(document)
+     document = ' '.join([token.lemma_ for token in spacy_results])
+     return document
 
 # реализация программы
 if upload_button is not None:
@@ -94,10 +94,14 @@ if upload_button is not None:
     #st.write(cleaned_sub)
     
     # ВАРИАНТ 2
-    string_data = re.sub(r'\n', ' ', str(string_data))
-    string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
-    string_data = re.sub(r'[^а-яa-z\s]', ' ', string_data)
-    string_data = string_data.lower()
-    spacy_results = nlp(string_data)
-    string_data = ' '.join([token.lemma_ for token in spacy_results])
-    st.write(string_data)
+    # string_data = re.sub(r'\n', ' ', str(string_data))
+    # string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
+    # string_data = re.sub(r'[^а-яa-z\s]', ' ', string_data)
+    # string_data = string_data.lower()
+    # spacy_results = nlp(string_data)
+    # string_data = ' '.join([token.lemma_ for token in spacy_results])
+    # st.write(string_data)
+    
+    # ВАРИАНТ 3
+    data = preprocess(string_data)
+    st.write(data)
