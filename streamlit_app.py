@@ -111,7 +111,7 @@ if upload_button is not None:
     vectorizer = CountVectorizer(stop_words = stop_words)
     vectorized_sub = vectorizer.fit_transform(data).toarray()
     
-    df = pd.DataFrame({})
+#    df = pd.DataFrame({})
     
     model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
     prediction_clf = model.predict([vectorized_sub])
