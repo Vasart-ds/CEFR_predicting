@@ -86,9 +86,9 @@ if upload_button is not None:
     # ВАРИАНТ 1
     text = prepare_text(string_data)
     text = del_stopwords(text)
+    text = nltk.word_tokenize(document,language = "english")
     text = nlp(text)
-    #text = ' '.join([token.lemma_ for token in text])
-    text = lemmatize(text)
+    text = ' '.join([token.lemma_ for token in text])
     text = pd.Series(text)
     
     vectorizer = CountVectorizer(stop_words=stop_words)
