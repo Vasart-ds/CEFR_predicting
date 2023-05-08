@@ -83,6 +83,9 @@ if upload_button is not None:
     
     text = prepare_text(string_data)
     text = del_stopwords(text)
+    text = nltk.word_tokenize(document,language = "english")
+#     spacy_results = nlp(document)
+#     document = ' '.join([token.lemma_ for token in spacy_results])
     st.write(text)
     
     
