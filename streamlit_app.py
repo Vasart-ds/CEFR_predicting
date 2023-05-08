@@ -88,11 +88,11 @@ if upload_button is not None:
     text = del_stopwords(text)
     text = nlp(text)
     text = ' '.join([token.lemma_ for token in text])
-    st.write(pd.Series(text))
+    text = pd.Series(text)
     
-    #vectorizer = CountVectorizer(stop_words=stop_words)
-    #vectorized_sub = vectorizer.fit_transform(text).toarray()
-    #st.write(vectorized_sub)
+    vectorizer = CountVectorizer(stop_words=stop_words)
+    vectorized_sub = vectorizer.fit_transform(text).toarray()
+    st.write(vectorized_sub)
     
 #    df = pd.DataFrame({})
     
