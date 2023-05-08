@@ -84,12 +84,12 @@ if upload_button is not None:
     string_data = stringio.read()
     
     # ВАРИАНТ 1
-    #text = prepare_text(string_data)
-    #text = del_stopwords(text)
-    #text = nltk.word_tokenize(text, language = "english")
+    text = prepare_text(string_data)
+    text = del_stopwords(text)
+    text = nltk.word_tokenize(text, language = "english")
     #spacy_results = nlp(text)
     #text = ' '.join([token.lemma_ for token in text])
-    #st.write(text)
+    st.write(text)
     
     #cleaned_sub = clean_subs(string_data)
     ##cleaned_sub = cleaned_sub.apply(preprocess)
@@ -105,9 +105,9 @@ if upload_button is not None:
     # st.write(string_data)
     
     # ВАРИАНТ 3
-    data = preprocess(string_data)
+    #data = preprocess(string_data)
     #data = nltk.word_tokenize(data, language = "english")
-    st.write(data)
+    #st.write(data)
     #vectorizer = CountVectorizer(stop_words = stop_words)
     #vectorized_sub = vectorizer.fit_transform(data).toarray()
     
