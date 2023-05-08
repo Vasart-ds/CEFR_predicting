@@ -100,4 +100,4 @@ if upload_button is not None:
     string_data = string_data.lower()
     spacy_results = nlp(string_data)
     string_data = ' '.join([token.lemma_ for token in spacy_results])
-    st.write(text)
+    st.write(string_data)
