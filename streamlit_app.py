@@ -23,7 +23,7 @@ welcome_img, welcome_text = st.columns(2)
 welcome_img = welcome_img.image('./img/welcome_image.jpg')
 welcome_text = welcome_text.markdown('**_Sup fella. Ya know where ya come? Here we talkin about CEFR levels - the system of knowin foreign languages. If ya know me, then u like to watch movies and ya know Im talking in English, dearfrend. Wanna try some? Push da button below, upload subs of ur best movie and enjoy!_**')
 
-free_space_1, upload_button, free_space_2 = st.columns(3)
+movie_name, upload_button, free_space_2 = st.columns(3)
 upload_button = upload_button.file_uploader(label='English, dearfrend, can u read it?!', accept_multiple_files = False)
 
 # функции для очистки субтитров
@@ -110,4 +110,8 @@ if upload_button is not None:
     
     vectorizer = CountVectorizer(stop_words = stop_words)
     vectorized_sub = vectorizer.fit_transform(data).toarray()
-    st.write(vectorized_sub)
+    
+    model = pickle.load(open(r'.\catboost_clf.pcl', 'rb'))
+    prediction_clf = model.predict(vectorized_sub)
+    
+    movie_name = movie_name.write(prediction_clf)
