@@ -71,7 +71,7 @@ if upload_button is not None:
     subs_features = pd.DataFrame({'subtitles': text})
     
     vectorizer = CountVectorizer(stop_words=stop_words)
-    vectorized_sub = vectorizer.fit_transform(text).toarray()
+    vectorized_sub = vectorizer.fit_transform(subs_features).toarray()
     st.write(vectorized_sub)
     
     
