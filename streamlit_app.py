@@ -82,6 +82,7 @@ if upload_button is not None:
     string_data = stringio.read()
     
     text = prepare_text(string_data)
+    text = del_stop_words(text)
     st.write(text)
     
     
