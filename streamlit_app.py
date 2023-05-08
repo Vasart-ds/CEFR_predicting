@@ -110,5 +110,4 @@ if upload_button is not None:
     
     vectorizer = CountVectorizer(stop_words = stop_words)
     vectorized_sub = vectorizer.fit_transform(data).toarray()
-    vectorized_sub = nlp(data)
     st.write(vectorized_sub)
