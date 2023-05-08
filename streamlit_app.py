@@ -69,12 +69,11 @@ if upload_button is not None:
     #st.write(text)
     
     subs_features = pd.DataFrame({'subtitles': text})
+    st.write(subs_features)
     
-    vectorizer = CountVectorizer(stop_words=stop_words)
-    vectorized_sub = vectorizer.fit_transform(subs_features).toarray()
-    st.write(vectorized_sub)
-    
-    
+    #vectorizer = CountVectorizer(stop_words=stop_words)
+    #vectorized_sub = vectorizer.fit_transform(subs_features).toarray()
+    #st.write(vectorized_sub)
     
     #model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
     #prediction = model.predict(vectorized_sub)
