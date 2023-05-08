@@ -86,7 +86,7 @@ if upload_button is not None:
     #text = nltk.word_tokenize(text, language = "english")
     spacy_results = nlp(text)
     #text = ' '.join([token.lemma_ for token in spacy_results])
-    databytes = text.getvalue()
+    databytes = stringio.getvalue()
     st.write(databytes)
     
     
