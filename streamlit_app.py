@@ -89,7 +89,7 @@ if upload_button is not None:
     text = nlp(text)
     text = ' '.join([token.lemma_ for token in text])
     
-    vectorizer = CountVectorizer(verbose=False)
+    vectorizer = CountVectorizer()
     vectorized_sub = vectorizer.fit_transform(text).toarray()
     st.write(vectorized_sub)
     
