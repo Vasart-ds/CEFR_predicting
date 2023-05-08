@@ -1,4 +1,4 @@
-catboost==0.14.0
+catboost==1.2
 pymystem3
 nltk
 streamlit
