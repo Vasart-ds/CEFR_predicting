@@ -4,3 +4,4 @@ nltk
 streamlit
 spacy
 pip==23.1.2
+sklearn
