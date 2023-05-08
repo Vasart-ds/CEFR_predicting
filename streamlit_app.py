@@ -5,6 +5,14 @@ import os
 
 from io import StringIO
 
+import pysrt
+import nltk
+nltk.download('stopwords')
+from nltk.tokenize import word_tokenize
+from pymystem3 import Mystem
+
+from nltk.corpus import stopwords
+
 # content
 st.title('_Jules Winnfield CEFR english predicting_')
 welcome_img, welcome_text = st.columns(2)
@@ -14,6 +22,7 @@ welcome_text = welcome_text.markdown('**_Sup fella. Ya know where ya come? Here 
 free_space_1, upload_button, free_space_2 = st.columns(3)
 upload_button = upload_button.file_uploader(label='English, dearfrend, can u read it?!')
 
+# интерфейс
 if upload_button is not None:
   stringio = StringIO(upload_button.getvalue().decode('iso-8859-1'))
   string_data = stringio.read()
