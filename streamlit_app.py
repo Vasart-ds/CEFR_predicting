@@ -88,15 +88,16 @@ if upload_button is not None:
     text = del_stopwords(text)
     text = nlp(text)
     text = ' '.join([token.lemma_ for token in text])
+    st.write(text)
     
-    vectorizer = CountVectorizer(stop_words=stop_words)
-    vectorized_sub = vectorizer.fit_transform([text]).toarray()
+    #vectorizer = CountVectorizer(stop_words=stop_words)
+    #vectorized_sub = vectorizer.fit_transform([text]).toarray()
     #st.write(vectorized_sub)
     
 #    df = pd.DataFrame({})
     
-    model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
-    prediction = model.predict(vectorized_sub)
-    st.write(prediction)
+    #model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
+    #prediction = model.predict(vectorized_sub)
+    #st.write(prediction)
     
     #movie_name = movie_name.write(prediction_clf)
