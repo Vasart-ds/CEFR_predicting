@@ -65,18 +65,18 @@ if upload_button is not None:
     text = nltk.word_tokenize(text,language = "english")
     text = nlp(str(text))
     text = ' '.join([token.lemma_ for token in text])
-    #text = pd.Series(text)
+    text = pd.Series(text)
     #st.write(text)
     
     subs_features = pd.DataFrame({'subtitles': text})
-    st.write(subs_features)
+    #st.write(subs_features)
     
-    #vectorizer = CountVectorizer(stop_words=stop_words)
-    #vectorized_sub = vectorizer.fit_transform(subs_features).toarray()
+    vectorizer = CountVectorizer(stop_words=stop_words)
+    vectorized_sub = vectorizer.fit_transform(subs_features).toarray()
     #st.write(vectorized_sub)
     
-    #model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
-    #prediction = model.predict(vectorized_sub)
-    #st.write(prediction)
+    model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
+    prediction = model.predict(vectorized_sub)
+    st.write(prediction)
     
     #movie_name = movie_name.write(prediction_clf)
