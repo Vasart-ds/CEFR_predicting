@@ -31,25 +31,61 @@ if upload_button is not None:
   stop_words = stopwords.words('english')
   nlp = spacy.load("en_core_web_sm")
   
-  def preprocess(text):
-    # удаление символов
-    document = re.sub(r'\W', ' ', str(text))
-    # удаление одиноко стоящих слов
-    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
-    # приведение к нижнему регистру 
-    document = document.lower()
-    # токенизация
-    #document = nltk.word_tokenize(document,language = "english")
-    # лемматизация
-    spacy_results = nlp(document)
-    document = ' '.join([token.lemma_ for token in spacy_results])
-    return document
+ # def preprocess(text):
+ #   # удаление символов
+ #   document = re.sub(r'\W', ' ', str(text))
+ #   # удаление одиноко стоящих слов
+ #   document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
+ #   # приведение к нижнему регистру 
+ #   document = document.lower()
+ #   # токенизация
+ #   #document = nltk.word_tokenize(document,language = "english")
+ #   # лемматизация
+ #   spacy_results = nlp(document)
+ #   document = ' '.join([token.lemma_ for token in spacy_results])
+ #   return document
+ # 
+ # string_data = re.sub(r'\W', ' ', str(string_data))
+ # string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
+ # string_data = string_data.lower()
+ # spacy_results = nlp(string_data)
+ # string_data = ' '.join([token.lemma_ for token in spacy_results])
+
+del_n = re.compile('\n')                # перенос каретки
+del_tags = re.compile('<[^>]*>')        # html-теги
+del_brackets = re.compile('\([^)]*\)')  # содержимое круглых скобок
+clean_text = re.compile('[^а-яa-z\s]')  # все небуквенные символы кроме пробелов
+del_spaces = re.compile('\s{2,}')       # пробелы от 2-ух подряд
+
+def prepare_text(text):
+    text = del_n.sub(' ', str(text).lower())
+    text = del_tags.sub('', text)
+    text = del_brackets.sub('', text)
+    res_text = clean_text.sub('', text)
+    return del_spaces.sub(' ', res_text)
+
+def del_stopwords(text):
+    clean_tokens = tuple(
+        map(lambda x: x if x not in stop_words else '', word_tokenize(text))
+    )
+    res_text = ' '.join(clean_tokens)
+    return res_text
+
+def lemmatize(text):    
+    lemmatized_text = ''.join(Mystem().lemmatize(text))
+    return lemmatized_text.split('|')
   
-  string_data = re.sub(r'\W', ' ', str(string_data))
-  string_data = re.sub(r'\s+[a-zA-Z]\s+', ' ', string_data)
-  string_data = string_data.lower()
-  spacy_results = nlp(string_data)
-  string_data = ' '.join([token.lemma_ for token in spacy_results])
+  def clean_subs(sub_list):
+    filtered = []
+    for word in tqdm(range(len(sub_list))):
+        text = prepare_text(sub_list[word])
+        text = del_stopwords(text)
+        text = lemmatize(text)
+        # тест
+#        text = nlp(text)
+        filtered.append(text)
+    return filtered
   
  # string_data = string_data.apply(preprocess)
-  st.write(string_data)
+cleaned_sub = clean_subs(string_data)
+st.write(cleaned_sub)
