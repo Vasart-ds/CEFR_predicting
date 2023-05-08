@@ -114,6 +114,6 @@ if upload_button is not None:
 #    df = pd.DataFrame({})
     
     model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
-    prediction_clf = model.predict([vectorized_sub])
+    prediction_clf = model.predict(vectorized_sub)
     
     movie_name = movie_name.write(prediction_clf)
