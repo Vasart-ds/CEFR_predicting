@@ -1,5 +1,4 @@
 catboost
-pysrt
 pymystem3
 streamlit
 spacy
