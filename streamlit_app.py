@@ -53,30 +53,6 @@ def del_stopwords(text):
 def lemmatize(text):    
     lemmatized_text = ''.join(Mystem().lemmatize(text))
     return lemmatized_text#.split('|')
-  
-def clean_subs(sub_list):
-    filtered = []
-    for word in range(len(sub_list)):
-        text = prepare_text(sub_list[word])
-        text = del_stopwords(text)
-        text = lemmatize(text)
-        filtered.append(text)
-    return filtered
- 
-#def preprocess(text):
-#    # удаление символов
-#    document = re.sub(r'\W', ' ', str(text))
-#    # удаление одиноко стоящих слов
-#    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document)
-#    document = re.sub('[^а-яa-z\s]', ' ', document)
-#    # приведение к нижнему регистру 
-#    document = document.lower()
-#    # токенизация
-#    #document = nltk.word_tokenize(document,language = "english")
-#    # лемматизация
-#    spacy_results = nlp(document)
-#    document = ' '.join([token.lemma_ for token in spacy_results])
-#    return document
 
 # реализация программы
 if upload_button is not None:
@@ -90,13 +66,15 @@ if upload_button is not None:
     text = nlp(str(text))
     text = ' '.join([token.lemma_ for token in text])
     text = pd.Series(text)
-    st.write(text)
+    #st.write(text)
+    
+    subs_features = pd.DataFrame({'subtitles': text})
     
     vectorizer = CountVectorizer(stop_words=stop_words)
-    vectorized_sub = vectorizer.fit_transform(text[0]).toarray()
+    vectorized_sub = vectorizer.fit_transform(text).toarray()
     st.write(vectorized_sub)
     
-#    df = pd.DataFrame({})
+    
     
     #model = pickle.load(open(r'catboost_clf.pcl', 'rb'))
     #prediction = model.predict(vectorized_sub)
