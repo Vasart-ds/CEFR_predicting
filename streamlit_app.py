@@ -1,3 +1,5 @@
+
+
 import pandas as pd
 import streamlit as st
 import pickle
@@ -13,6 +15,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from pymystem3 import Mystem
 import spacy
+spacy.download('en_core_web_sm')
 
 from sklearn.feature_extraction.text import CountVectorizer
 
