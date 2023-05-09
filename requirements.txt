@@ -3,6 +3,6 @@ pymystem3
 nltk
 streamlit
 spacy
+spacy download en_core_web_sm
 pip==23.1.2
 scikit-learn
-en_core_web_sm==3.5.0
