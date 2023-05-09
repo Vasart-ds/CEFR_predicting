@@ -5,3 +5,4 @@ streamlit
 spacy
 pip==23.1.2
 scikit-learn
+en_core_web_sm==3.5.0
