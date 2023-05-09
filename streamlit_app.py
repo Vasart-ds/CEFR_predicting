@@ -70,7 +70,7 @@ if upload_button is not None:
     subs_features = pd.DataFrame({'subtitles': text})
     st.write(subs_features)
     
-    vectorizer = picle.load(open(r'vectorizer.pkl', 'rb'))
+    vectorizer = pickle.load(open(r'vectorizer.pkl', 'rb'))
     vectorized_sub = vectorizer.fit_transform(text).toarray()
     st.write(vectorized_sub)
     
