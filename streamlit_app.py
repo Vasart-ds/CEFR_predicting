@@ -66,7 +66,7 @@ if upload_button is not None:
     #text = nltk.word_tokenize(str(text),language = "english")
     text = ' '.join([token.lemma_ for token in text])
     
-    subs_features = pd.DataFrame({'subtitles': [text]})
+    subs_features = pd.DataFrame({'subtitles': text})
     st.write(subs_features)
     
     vectorizer = pickle.load(open(r'vectorizer.pkl', 'rb'))
