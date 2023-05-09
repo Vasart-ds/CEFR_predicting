@@ -71,7 +71,7 @@ if upload_button is not None:
     st.write(subs_features)
     
     vectorizer = pickle.load(open(r'vectorizer.pcl', 'rb'))
-    vectorized_sub = vectorizer.fit_transform(text).toarray()
+    vectorized_sub = vectorizer.transform(text).toarray()
     st.write(vectorized_sub)
     
     
